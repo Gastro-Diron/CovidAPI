@@ -1,22 +1,10 @@
 import ballerina/http;
 
-@http:ServiceConfig {
-    cors: {
-        allowOrigins: ["*"],
-        allowCredentials: true,
-        allowHeaders: ["*"],
-        exposeHeaders: [],
-        allowMethods: ["POST"],
-        maxAge: 84900
-    }
-}
-
 service /covid/status on new http:Listener(9000) {
 
     resource function get countries() returns CovidEntry[] {
         return covidTable.toArray();
     }
-        
 
     resource function post countries(@http:Payload CovidEntry[] covidEntries)
                                     returns CovidEntry[]|ConflictingIsoCodesError {
