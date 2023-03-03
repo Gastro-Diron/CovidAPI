@@ -1,5 +1,15 @@
 import ballerina/http;
 
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["*"],
+        allowCredentials: true,
+        allowHeaders: ["*"],
+        exposeHeaders: [],
+        maxAge: 84900
+    }
+}
+
 service /covid/status on new http:Listener(9000) {
 
     resource function get countries() returns CovidEntry[] {
