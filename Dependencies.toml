@@ -49,6 +49,20 @@ dependencies = [
 
 [[package]]
 org = "ballerina"
+name = "email"
+version = "2.5.2"
+dependencies = [
+	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "log"},
+	{org = "ballerina", name = "mime"},
+	{org = "ballerina", name = "task"}
+]
+modules = [
+	{org = "ballerina", packageName = "email", moduleName = "email"}
+]
+
+[[package]]
+org = "ballerina"
 name = "file"
 version = "1.5.0"
 dependencies = [
@@ -98,9 +112,6 @@ version = "1.3.1"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "lang.value"}
-]
-modules = [
-	{org = "ballerina", packageName = "io", moduleName = "io"}
 ]
 
 [[package]]
@@ -265,18 +276,6 @@ dependencies = [
 
 [[package]]
 org = "ballerina"
-name = "test"
-version = "0.0.0"
-scope = "testOnly"
-dependencies = [
-	{org = "ballerina", name = "jballerina.java"}
-]
-modules = [
-	{org = "ballerina", packageName = "test", moduleName = "test"}
-]
-
-[[package]]
-org = "ballerina"
 name = "time"
 version = "2.2.3"
 dependencies = [
@@ -308,13 +307,13 @@ org = "gastro"
 name = "covid19"
 version = "0.1.0"
 dependencies = [
+	{org = "ballerina", name = "email"},
 	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "io"},
-	{org = "ballerina", name = "test"},
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "gastro", packageName = "covid19", moduleName = "covid19"}
+	{org = "gastro", packageName = "covid19", moduleName = "covid19"},
+	{org = "gastro", packageName = "covid19", moduleName = "covid19.email"}
 ]
 
 

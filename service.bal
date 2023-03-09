@@ -1,4 +1,7 @@
 import ballerina/http;
+import covid19.email;
+
+configurable string toEmail = "gastrodiron@gmail.com";
 
 @http:ServiceConfig {
     cors: {
@@ -9,12 +12,12 @@ import ballerina/http;
         maxAge: 84900
     }
 }
-
 service /covid/status on new http:Listener(9000) {
 
     resource function get countries() returns CovidEntry[] {
+        error? mailer  = email:sendEmail();
         return covidTable.toArray();
-    }
+    }  
 
     resource function post countries(@http:Payload CovidEntry[] covidEntries)
                                     returns CovidEntry[]|ConflictingIsoCodesError {
